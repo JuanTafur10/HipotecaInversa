@@ -1,7 +1,3 @@
-#Codigo para hallar el ingreso mensual que el banco le paga al usuario
-#Codigo para hallar cual es la deuda total que el usuario le debe al banco
-
-
 def hipoteca_inversa_caso_1():
     edad = 70
     expectativa_de_vida = 75
@@ -53,7 +49,6 @@ def calcular_deuda_total(ingreso_mensual, tasa_de_interes_mensual, total_cuotas)
 hipoteca_inversa_caso_1()
 
 
-
 def hipoteca_inversa_caso_2():
     edad = 75
     expectativa_de_vida = 88
@@ -103,7 +98,6 @@ def calcular_deuda_total(ingreso_mensual, tasa_de_interes_mensual, total_cuotas)
     return round(saldo)  
 
 hipoteca_inversa_caso_2()
-
 
 
 def hipoteca_inversa_caso_3():
