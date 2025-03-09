@@ -7,5 +7,9 @@
             "*test*.py"
         ],
         "python.testing.pytest.Enabled": false,
-        "python.testing.pystest.Enabled": true
+        "python.testing.pystest.Enabled": true,
+        
+        "python.autoComplete.extraPaths": [
+            "src"
+        ]
 }
