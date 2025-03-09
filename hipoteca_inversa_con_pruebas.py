@@ -1,4 +1,4 @@
-def hipoteca_inversa_caso_1():
+def definir_hipoteca_inversa_caso_1():
     edad = 70
     expectativa_de_vida = 75
     años_de_renta = 5
@@ -46,10 +46,10 @@ def calcular_deuda_total(ingreso_mensual, tasa_de_interes_mensual, total_cuotas)
     
     return round(saldo)  
 
-hipoteca_inversa_caso_1()
+definir_hipoteca_inversa_caso_1()
 
 
-def hipoteca_inversa_caso_2():
+def definir_hipoteca_inversa_caso_2():
     edad = 75
     expectativa_de_vida = 88
     años_de_renta = 17
@@ -97,10 +97,10 @@ def calcular_deuda_total(ingreso_mensual, tasa_de_interes_mensual, total_cuotas)
     
     return round(saldo)  
 
-hipoteca_inversa_caso_2()
+definir_hipoteca_inversa_caso_2()
 
 
-def hipoteca_inversa_caso_3():
+def definir_hipoteca_inversa_caso_3():
     edad = 85
     expectativa_de_vida = 89
     años_de_renta = 4
@@ -148,4 +148,4 @@ def calcular_deuda_total(ingreso_mensual, tasa_de_interes_mensual, total_cuotas)
     
     return round(saldo)  
 
-hipoteca_inversa_caso_3()
+definir_hipoteca_inversa_caso_3()

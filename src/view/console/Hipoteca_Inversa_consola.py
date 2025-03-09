@@ -1,4 +1,6 @@
-import hipoteca_inversa
+import sys
+sys.path.append("src/model")
+from model import hipoteca_inversa
 
 try:
     edad = int(input("Ingrese la edad del cliente: "))
@@ -10,13 +12,14 @@ try:
     valor_de_la_hipoteca = float(input("Ingrese el valor de la hipoteca: "))
     tasa_de_interes_mensual = float(input("Ingrese la tasa de interés mensual: ")) 
 
+    hipoteca = hipoteca_inversa.Hipoteca(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual)
 
-    resultado_ingreso_mensual_esperado = hipoteca_inversa.calcular_ingreso_mensual(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas)
-    resultado_deuda_total_esperada = hipoteca_inversa.calcular_deuda_total(resultado_ingreso_mensual_esperado, tasa_de_interes_mensual, total_cuotas)
+    resultado_ingreso_mensual_esperado = hipoteca.calcular_ingreso_mensual()
+    resultado_deuda_total_esperada = hipoteca.calcular_deuda_total()
 
     print(f"Ingreso mensual esperado: {resultado_ingreso_mensual_esperado}")
     print(f"Deuda total esperada: {resultado_deuda_total_esperada}")
 
-except Exception as e:
-    print("Hubo un error en los datos ingresados.")
-    print(str(e))
+except Exception as excepcion_de_error:
+    print("Hubo un error en los datos ingresados:")
+    print(str(excepcion_de_error))
