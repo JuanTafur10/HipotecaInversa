@@ -8,6 +8,9 @@ from model import hipoteca_inversa
 
 
 class PruebasHipotecaInversa(unittest.TestCase):
+
+
+#3 Casos de Prueba Normales    
     
     def test_calcular_hipoteca_inversa_1(self):
         edad = 70
@@ -81,6 +84,9 @@ class PruebasHipotecaInversa(unittest.TestCase):
         self.assertAlmostEqual(round(ingreso_mensual), resultado_ingreso_mensual_esperado, places=2)
         self.assertAlmostEqual(round(deuda_total), resultado_deuda_total_esperada, places=2)
 
+
+#3 Casos de Prueba Extraordinarios
+
     def test_calcular_hipoteca_inversa_total_cuotas_1(self):
         edad = 70
         expectativa_de_vida = 85
@@ -152,6 +158,9 @@ class PruebasHipotecaInversa(unittest.TestCase):
 
         self.assertAlmostEqual(round(ingreso_mensual), resultado_ingreso_mensual_esperado, places=2)
         self.assertAlmostEqual(round(deuda_total), resultado_deuda_total_esperada, places=2)
+
+
+#4 Casos de Prueba con Errores
 
     def test_calcular_hipoteca_inversa_con_porcentajes_negativos(self):
         edad = 74
