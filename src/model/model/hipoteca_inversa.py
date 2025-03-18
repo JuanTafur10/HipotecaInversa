@@ -44,7 +44,7 @@ class Hipoteca:
         ingreso_mensual = valor_de_la_hipoteca / self.total_cuotas
 
         if self.porcentaje_precio_real == 100:
-            print("Advertencia: La hipoteca cubre el 100% del precio de la vivienda.")
+            ingreso_mensual = 0
 
         if self.total_cuotas == 1:
             ingreso_mensual = valor_de_la_hipoteca

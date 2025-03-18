@@ -5,13 +5,9 @@ sys.path.append("src/model")
 
 from model import hipoteca_inversa
 
-
-
 class PruebasHipotecaInversa(unittest.TestCase):
 
-
-#3 Casos de Prueba Normales    
-    
+    # 3 Casos de Prueba Normales    
     def test_calcular_hipoteca_inversa_1(self):
         edad = 70
         expectativa_de_vida = 75
@@ -30,6 +26,7 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Normal 1")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
@@ -54,6 +51,7 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Normal 2")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
@@ -78,15 +76,14 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Normal 3")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
         self.assertAlmostEqual(round(ingreso_mensual), resultado_ingreso_mensual_esperado, places=2)
         self.assertAlmostEqual(round(deuda_total), resultado_deuda_total_esperada, places=2)
 
-
-#3 Casos de Prueba Extraordinarios
-
+    # 3 Casos de Prueba Extraordinarios
     def test_calcular_hipoteca_inversa_total_cuotas_1(self):
         edad = 70
         expectativa_de_vida = 85
@@ -105,6 +102,7 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Extraordinario 1")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
@@ -129,6 +127,7 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Extraordinario 2")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
@@ -153,15 +152,15 @@ class PruebasHipotecaInversa(unittest.TestCase):
         ingreso_mensual = hipoteca.calcular_ingreso_mensual()
         deuda_total = hipoteca.calcular_deuda_total(ingreso_mensual)
 
+        print("\nCaso Extraordinario 3")
+        print("Advertencia: La hipoteca cubre el 100% del precio de la vivienda.")
         print(f"Ingreso mensual calculado: {ingreso_mensual}")
         print(f"Deuda total calculada: {deuda_total}")
 
         self.assertAlmostEqual(round(ingreso_mensual), resultado_ingreso_mensual_esperado, places=2)
         self.assertAlmostEqual(round(deuda_total), resultado_deuda_total_esperada, places=2)
 
-
-#4 Casos de Prueba con Errores
-
+    # 4 Casos de Prueba con Errores
     def test_calcular_hipoteca_inversa_con_porcentajes_negativos(self):
         edad = 74
         expectativa_de_vida = 88
@@ -174,7 +173,8 @@ class PruebasHipotecaInversa(unittest.TestCase):
 
         with self.assertRaises(hipoteca_inversa.ErrorValoresIngresadosPorcentajes) as comentario:
             hipoteca_inversa.Hipoteca(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual)
-        print(f"Mensaje de error: {comentario.exception}")
+        print("\nCaso de Error 1")
+        print(f"Mensaje de error: El valor de los porcentajes de la vivienda y la tasa de interes son invalidos. Los Valores del porcentaje de la vivienda ({porcentaje_precio_real}) y/o ({tasa_de_interes_mensual}) no pueden ser negativos. Vuelvalo a intentar con valores positivos")
 
     def test_calcular_hipoteca_inversa_con_edad_invalida(self):
         edad = 50
@@ -188,7 +188,8 @@ class PruebasHipotecaInversa(unittest.TestCase):
 
         with self.assertRaises(hipoteca_inversa.ErrorEdadIncorrecta) as comentario:
             hipoteca_inversa.Hipoteca(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual)
-        print(f"Mensaje de error: {comentario.exception}")
+        print("\nCaso de Error 2")
+        print(f"Mensaje de error: El valor de la edad del cliente no es válida. La edad ingresada ({edad}) es incorrecta. Vuelvalo a intentar teniendo en cuenta que la edad minima para la hipoteca inversa es 65")
 
     def test_calcular_hipoteca_inversa_con_cuotas_invalida(self):
         edad = 80
@@ -202,7 +203,8 @@ class PruebasHipotecaInversa(unittest.TestCase):
 
         with self.assertRaises(hipoteca_inversa.ErrorCuotas) as comentario:
             hipoteca_inversa.Hipoteca(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual)
-        print(f"Mensaje de error: {comentario.exception}")
+        print("\nCaso de Error 3")
+        print(f"Mensaje de error: El valor de las cuotas no es válido. El numero de cuotas ({total_cuotas}) es incorrecta. Vuelvalo a intentar sabiendo que el numero de cuotas no puede ser negativo o igual que 0, sepa que el valor debe ser mayor que 0")
 
     def test_calcular_hipoteca_inversa_con_edad_negativa(self):
         edad = -65
@@ -216,7 +218,8 @@ class PruebasHipotecaInversa(unittest.TestCase):
 
         with self.assertRaises(hipoteca_inversa.ErrorEdadnegativa) as comentario:
             hipoteca_inversa.Hipoteca(edad, precio_de_la_vivienda, porcentaje_precio_real, total_cuotas, tasa_de_interes_mensual)
-        print(f"Mensaje de error: {comentario.exception}")
+        print("\nCaso de Error 4")
+        print(f"Mensaje de error: La edad ingresada no puede ser negativa. La edad ingresada ({edad}) es incorrecta. Vuelvalo a intentar teniendo en cuenta que la edad no debe ser negativa")
 
 if __name__ == '__main__':
     unittest.main()
